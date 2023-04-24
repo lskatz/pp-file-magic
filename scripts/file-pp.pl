@@ -6,6 +6,11 @@ use Data::Dumper;
 use Getopt::Long;
 use File::Basename qw/basename/;
 
+use FindBin qw/$RealBin/;
+
+use lib "$RealBin/../lib";
+use Magic qw/file/;
+
 use version 0.77;
 our $VERSION = '0.1.1';
 
@@ -16,14 +21,19 @@ exit(main());
 sub main{
   my $settings={};
   GetOptions($settings,qw(help)) or die $!;
-  usage() if($$settings{help});
+  usage() if(!@ARGV || $$settings{help});
+  
+  for my $file(@ARGV){
+    print file($file);
+    print "\n";
+  }
 
   return 0;
 }
 
 sub usage{
-  print "$0: does something
-  Usage: $0 [options] arg1
+  print "$0: determines file type from magic
+  Usage: $0 [options] file
   --help   This useful help menu
   \n";
   exit 0;

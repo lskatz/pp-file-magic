@@ -15,10 +15,10 @@ my $preop = 'true';
 
 WriteMakefile1(
   NAME         => 'template',
-  VERSION_FROM => 'scripts/template.pl',
+  VERSION_FROM => 'scripts/file-pp.pl',
   AUTHOR => q{Lee S. Katz <gzu2@cdc.gov>},
   EXE_FILES    => [
-    "scripts/template.pl",
+    "scripts/file-pp.pl",
   ],
   PREREQ_PM    => {
     # Core modules

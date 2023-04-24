@@ -7,11 +7,19 @@ use File::Basename qw/dirname/;
 use FindBin qw/$RealBin/;
 use Data::Dumper;
 
-use Test::More tests => 1;
+use lib '$RealBin/../lib';
+
+use Test::More tests => 3;
+
+use_ok("Magic");
 
 $ENV{PATH} = "$RealBin/../scripts:".$ENV{PATH};
 
-diag `template.pl -h`;
+diag `file-pp.pl -h`;
 my $exit_code = $? << 8;
 is($exit_code, 0, "exit code");
+
+subtest 'sub file' => sub {
+  is(file($0), "script", "Detected this script as a script");
+};
 
