@@ -9,10 +9,22 @@ use List::Util qw/min max/;
 my %magicLiteral = (
   '@'            => "fastq",
   'BZh'          => "bz",
-  '\x1f\x8b\x08' => "gz",
+  '\x1f\x8b'     => "gz",
+  #'\x1f\x8b\x08' => "gz",
   '>'            => "fasta",
   '\x5c\x67\x31' => "bam",
   '#!'           => "script",
+  'GIF87a'       => "gif",
+  'GIF89a'       => "gif",
+  '\x49\x49\x2a\x00' => 'tif',
+  '\x4d\x4d\x00\x2a' => 'tiff',
+  '\xff\xd8\xff\xe0\x00\x10\x4a\x46' => 'jpg',
+  '\x89\x50\x4e\x47\x0d\x0a\x1a\x0a' => 'png',
+  '<svg'         => 'svg',
+  '%PDF'         => 'pdf',
+  'BM'           => 'bmp',
+  '\xfd\x37\x7a\x58\x5a\x00' => 'xz',
+
 );
 
 my $maxMagicLength = max(map{length($_)} keys(%magicLiteral));
