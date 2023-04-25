@@ -1,10 +1,58 @@
 #!/usr/bin/env perl
 
+package File::MagicPP;
+
 use strict;
 use warnings;
 use Data::Dumper;
-
+use version 0.77;
 use List::Util qw/min max/;
+
+use Exporter qw/import/;
+
+our @EXPORT_OK = qw(
+  file
+  $VERSION
+  %magicLiteral
+);
+
+=pod
+
+=head1 NAME
+
+File::MagicPP
+
+=head1 SYNOPSIS
+
+This module provides file magic through pure perl and does not rely on
+libraries external to Perl.
+
+    use File::MagicPP qw/file/;
+    my $type = file($0);
+    # $type now holds "script"
+
+=cut
+
+=pod
+
+=head1 VARIABLES
+
+=head2 $VERSION
+
+Describes the library version
+
+=cut
+
+our $VERSION = '0.2.0';
+
+=pod
+
+=head2 %magicLiteral
+
+Provides a hash of magic bits to file type, e.g.,
+BZh => "bz"
+
+=cut
 
 my %magicLiteral = (
   '@'            => "fastq",
@@ -28,6 +76,16 @@ my %magicLiteral = (
 );
 
 my $maxMagicLength = max(map{length($_)} keys(%magicLiteral));
+
+=pod
+
+=head1 FUNCTIONS
+
+=head2 file()
+
+Give it a file path and it will tell you the file type.
+
+=cut
 
 sub file{
     my ($file_path) = @_;

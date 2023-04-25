@@ -15,7 +15,7 @@ my $preop = 'true';
 
 WriteMakefile1(
   NAME         => 'template',
-  VERSION_FROM => 'scripts/file-pp.pl',
+  VERSION_FROM => 'lib/File/MagicPP.pm',
   AUTHOR => q{Lee S. Katz <gzu2@cdc.gov>},
   EXE_FILES    => [
     "scripts/file-pp.pl",
@@ -26,9 +26,12 @@ WriteMakefile1(
     'Data::Dumper'   => 0,
     'version'        => 0.77,
     'Getopt::Long'   => 0,
+    'List::Util'     => 0,
+    'Exporter'       => 0,
   },
   BUILD_REQUIRES => {
     'Test::More'     => 0.47,
+    'FindBin'        => 0,
   },
   MIN_PERL_VERSION => '5.12.0',
   LICENSE          => "gpl_3",

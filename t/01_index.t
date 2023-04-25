@@ -9,9 +9,9 @@ use Data::Dumper;
 
 use lib '$RealBin/../lib';
 
-use Test::More tests => 3;
+use Test::More tests => 2;
 
-use_ok("Magic");
+use File::MagicPP qw/file/;
 
 $ENV{PATH} = "$RealBin/../scripts:".$ENV{PATH};
 
