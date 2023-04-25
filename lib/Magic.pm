@@ -38,17 +38,22 @@ sub file{
 
     my $maxLength = min(length($header), $maxMagicLength);
 
-    for(my $length=length($header); $length > 0; $length--){
+    # For each possible length, look for keys that match the
+    # header, longest to shortest.
+    for(my $length=$maxLength; $length > 0; $length--){
       my $headerSubstr = substr($header, 0, $length);
       if($magicLiteral{$headerSubstr}){
         return $magicLiteral{$headerSubstr};
       }
     }
 
+    # If we haven't found anything yet, see if it's just
+    # letters and numbers for plaintext.
     if($header =~ /^[\w\d]+\s*/){
       return "plaintext";
     }
 
+    # At this point, we just don't know
     return "UNKNOWN";
 }
 
