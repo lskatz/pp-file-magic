@@ -43,7 +43,7 @@ Describes the library version
 
 =cut
 
-our $VERSION = '0.2.0';
+our $VERSION = '0.2.1';
 
 =pod
 

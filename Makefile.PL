@@ -14,7 +14,7 @@ my $preop = 'true';
   #'pod2text README.pod | tee $(DISTVNAME)/README > README';
 
 WriteMakefile1(
-  NAME         => 'template',
+  NAME         => 'File::MagicPP',
   VERSION_FROM => 'lib/File/MagicPP.pm',
   AUTHOR => q{Lee S. Katz <gzu2@cdc.gov>},
   EXE_FILES    => [
@@ -45,8 +45,8 @@ WriteMakefile1(
     resources => {
       repository => {
         type => 'git',
-        url => 'git://github.com/lskatz/template.git',
-        web => 'https://github.com/lskatz/template',
+        url => 'git://github.com/lskatz/pp-file-magic.git',
+        web => 'https://github.com/lskatz/pp-file-magic',
       },
     },
   },
